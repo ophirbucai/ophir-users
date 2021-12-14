@@ -1,0 +1,40 @@
+.UserCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  & > * {
+    flex: 1;
+  }
+  &__name {
+    span {
+      margin-left: 4px;
+      font-weight: 300;
+      font-size: 0.9em;
+    }
+  }
+  &__email {
+    a {
+      font-weight: 300;
+      color: #f89c13;
+      text-decoration: none;
+      transition: text-decoration 400ms ease-in-out;
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:visited {
+        color: inherit;
+      }
+    }
+  }
+  &__coordinates {
+    font-weight: 300;
+  }
+  &__company {
+    font-weight: 500;
+  }
+}

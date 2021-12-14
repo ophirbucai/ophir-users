@@ -1,0 +1,41 @@
+.PostEdit {
+  &__title {
+    padding: 20px 0;
+    background: #010a0a;
+    color: #fff;
+    h1 {
+      font-weight: 300;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  &__form {
+    padding: 20px;
+    _group {
+      input {
+        all: unset;
+      }
+    }
+  }
+}
+
+//.PostEdit {
+//  //display: flex;
+//  flex-direction: column;
+//  height: 100%;
+//  &__title {
+//    flex: 1;
+//    font-size: 1.3em;
+//    input {
+//      font-size: 1.3em;
+//    }
+//  }
+//  &__body {
+//    flex: 3;
+//    font-size: 1.3em;
+//    input {
+//      font-size: 1.3em;
+//    }
+//  }
+//}
+

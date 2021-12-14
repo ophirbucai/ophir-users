@@ -1,0 +1,24 @@
+.PostCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  & > * {
+    flex: 1;
+  }
+  &__title {
+    //background: url('https://codetheweb.blog/assets/img/posts/css-advanced-background-images/mountains.jpg') center center;
+    background: url('wp2019623-honeycomb-wallpapers.jpg') center center;
+    background-size: cover;
+    h4 {
+      padding: 10px;
+      margin: 10px 0 0;
+      font-weight: 300;
+      font-size: 1.5em;
+      color: #F0FFFF;
+    }
+  }
+  &__body {
+    padding: 10px 10px 14px;
+    color: #0c1818;
+  }
+}

@@ -1,0 +1,99 @@
+.Home {
+  &__message {
+    text-align: center;
+    font-size: 1.5em;
+    text-shadow: 0px 2px 12px #0c1818;
+    color: #fffbf4;
+    font-weight: 300;
+    padding: 15px 0;
+  }
+  &__gallery {
+    padding: 20px 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 1000px;
+    &_item {
+      height: 180px;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #fffbf4;
+      box-shadow: 0px 1px 7px rgb(17 17 17 / 50%);
+      transition: box-shadow 150ms,
+      transform 150ms;
+      &:hover, &:focus {
+        box-shadow: 0px 4px 14px rgb(17 17 17 / 30%);
+        transform: rotate(-2deg) translateY(-5px) scale(1.025);
+      }
+      &_remove {
+        float: right;
+        color: #cbc9c9;
+        padding: 3px;
+        transition: color 150ms ease-out,
+                    transform 80ms ease-in-out;
+        &:hover {
+          color: #f89c13;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  &__posts {
+    padding: 10px 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 1000px;
+    &_item {
+      min-height: 180px;
+      border-radius: 6px;
+      background: #fffbf4;
+      box-shadow: 0px 1px 7px rgb(17 17 17 / 65%);
+      transition: transform 80ms linear,
+                  box-shadow 80ms ease-in-out;
+      //background: #f5c9ac;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 1px 4px 20px rgb(17 17 17 / 40%);
+      }
+      &_remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: #4f4d4d;
+        padding: 3px;
+        transition: color 100ms ease-out,
+                    transform 100ms ease-in-out;
+        &:hover {
+          color: #213ffd;
+          transform: scale(1.25);
+        }
+      }
+    }
+  }
+  &__edit_panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    animation: popIn 600ms ease-in-out;
+    .inside {
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      background: #fffbf4;
+      box-shadow: 0 0 20px rgba(17 17 17 / 45%);
+      border-radius: 10px;
+    }
+  }
+}
+@keyframes popIn {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
