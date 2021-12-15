@@ -16,6 +16,9 @@
     font-size: 1.2em;
     &_group {
       margin: 15px 0;
+      &_error {
+        color: #c70404;
+      }
       label {
         display: block;
         font-weight: 700;

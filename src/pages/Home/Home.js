@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useUsersFetch} from "../../hooks/useUsersFetch";
 import { usePostsFetch } from "../../hooks/usePostsFetch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,11 +13,18 @@ const Home = () => {
     const { users, isLoading, setUsers } = useUsersFetch();
     const { posts, isLoadingPosts, selectedUserId, setSelectedUserId, setPosts } = usePostsFetch()
     const [selectedPostIndex, setSelectedPostIndex] = useState(null);
-    const editRef = useRef();
+    const postEditPanelRef = useRef();
+    const { userId } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setSelectedUserId(userId);
+    }, [userId]);
+
     useEffect(() => {
         const clickOutside = (e) => {
             e.stopPropagation();
-            if (e.target.contains(editRef.current)) {
+            if (e.target.contains(postEditPanelRef.current)) {
                 setSelectedPostIndex(null);
             }
         }
@@ -50,7 +58,7 @@ const Home = () => {
                 !users.length ? <div className="Home__message">Sorry, no users found!</div> :
                 <section className='Home__gallery'>
                     {users.map((user) => (
-                        <div className="Home__gallery_item" key={user.id} onClick={() => setSelectedUserId(user.id)}>
+                        <div className="Home__gallery_item" key={user.id} onClick={() => navigate('/' + user.id)}>
                             <FontAwesomeIcon className="Home__gallery_item_remove"
                                              icon={faTimes}
                                              onClick={(e) => removeUser(user.id, e)}/>
@@ -74,21 +82,12 @@ const Home = () => {
                 </section>
             )}
             {typeof selectedPostIndex == 'number' && (
-                <section className="Home__edit_panel" ref={editRef}>
+                <section className="Home__edit_panel" ref={postEditPanelRef}>
                     <div className="inside">
                         <PostEdit post={posts[selectedPostIndex]} submit={updatePost} cancel={() => setSelectedPostIndex(null)} />
                     </div>
                 </section>
             )}
-
-            {/*<div className="mapouter">*/}
-            {/*    <div className="gmap_canvas">*/}
-            {/*        <iframe width="600" height="500" id="gmap_canvas"*/}
-            {/*                src="https://maps.google.com/maps?q=lat:24.6463,lng:-168.8889&t=&z=13&ie=UTF8&iwloc=&output=embed"*/}
-            {/*                frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
         </div>
     )
 };
