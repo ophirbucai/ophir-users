@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useUsersFetch} from "../../hooks/useUsersFetch";
 import { usePostsFetch } from "../../hooks/usePostsFetch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,6 +12,19 @@ const Home = () => {
     const { users, isLoading, setUsers } = useUsersFetch();
     const { posts, isLoadingPosts, selectedUserId, setSelectedUserId, setPosts } = usePostsFetch()
     const [selectedPostIndex, setSelectedPostIndex] = useState(null);
+    const editRef = useRef();
+    useEffect(() => {
+        const clickOutside = (e) => {
+            e.stopPropagation();
+            if (e.target.contains(editRef.current)) {
+                setSelectedPostIndex(null);
+            }
+        }
+        if (typeof selectedPostIndex == 'number') {
+            document.getElementById('root').addEventListener('mousedown', clickOutside);
+        }
+        return () => document.getElementById('root').removeEventListener('mousedown', clickOutside)
+    }, [selectedPostIndex])
 
     const removeUser = (id, e) => {
         e.stopPropagation();
@@ -26,8 +39,9 @@ const Home = () => {
         setPosts(posts => posts.filter(user => user.id !== id));
     }
 
-    const updatePost = (post) => {
-        console.log(post);
+    const updatePost = (form) => {
+        setPosts(prev => [...prev.slice(0, selectedPostIndex), form, ...prev.slice(selectedPostIndex + 1)]);
+        setSelectedPostIndex(null);
     }
 
     return (
@@ -59,10 +73,10 @@ const Home = () => {
                     ))}
                 </section>
             )}
-            {selectedPostIndex && (
-                <section className="Home__edit_panel">
+            {typeof selectedPostIndex == 'number' && (
+                <section className="Home__edit_panel" ref={editRef}>
                     <div className="inside">
-                        <PostEdit post={posts[selectedPostIndex]} />
+                        <PostEdit post={posts[selectedPostIndex]} submit={updatePost} cancel={() => setSelectedPostIndex(null)} />
                     </div>
                 </section>
             )}

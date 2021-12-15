@@ -2,7 +2,7 @@
   &__title {
     padding: 20px 0;
     background: #010a0a;
-    color: #fff;
+    color: #fffbf4;
     h1 {
       font-weight: 300;
       text-align: center;
@@ -10,32 +10,48 @@
     }
   }
   &__form {
-    padding: 20px;
-    _group {
-      input {
-        all: unset;
+    min-width: 500px;
+    width: 45vw;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    &_group {
+      margin: 15px 0;
+      label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: inherit;
+        border-radius: 5px;
+        border: 2px solid #cbc9c9;
+        outline: #f89c13;
+        padding: 10px;
+        font-family: inherit;
+      }
+    }
+    &_actions {
+      text-align: center;
+      padding-bottom: 10px;
+      & > button {
+        font-size: inherit;
+        border: none;
+        border-radius: 5px;
+        line-height: 2;
+        margin: 0 5px;
+        width: 100px;
+        cursor: pointer;
+        outline: none;
+      }
+      &_cancel {
+        background: #edefef;
+        color: #011515;
+      }
+      &_confirm {
+        background: #f6ba51;
       }
     }
   }
 }
-
-//.PostEdit {
-//  //display: flex;
-//  flex-direction: column;
-//  height: 100%;
-//  &__title {
-//    flex: 1;
-//    font-size: 1.3em;
-//    input {
-//      font-size: 1.3em;
-//    }
-//  }
-//  &__body {
-//    flex: 3;
-//    font-size: 1.3em;
-//    input {
-//      font-size: 1.3em;
-//    }
-//  }
-//}
-

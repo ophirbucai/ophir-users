@@ -8,7 +8,7 @@ const PostCard = ({ post }) => {
                 <h4>{post.title}</h4>
             </div>
             <div className="PostCard__body">
-                {post.body}
+                <p>{post.body}</p>
             </div>
         </div>
     );

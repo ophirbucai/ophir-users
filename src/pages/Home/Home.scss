@@ -80,11 +80,16 @@
     top: 50%;
     left: 50%;
     animation: popIn 600ms ease-in-out;
+    .outside {
+      position: fixed;
+      background: rgba(0 0 0 / 0.6);
+      inset: 0;
+    }
     .inside {
       overflow: hidden;
       transform: translate(-50%, -50%);
-      background: #fffbf4;
-      box-shadow: 0 0 20px rgba(17 17 17 / 45%);
+      background: #fff;
+      box-shadow: 0 0 15px rgba(17 17 17 / 45%);
       border-radius: 10px;
     }
   }
