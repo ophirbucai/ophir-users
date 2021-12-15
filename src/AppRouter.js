@@ -8,8 +8,9 @@ const AppRouter = () => {
       <div className="AppRouter">
         <Router>
           <Routes>
-              <Route exact path='/:userId' element={<Home />} />
-              <Route path='/map/:geo' element={<Map />} />
+              <Route exact path='/' element={<Home />} />
+              <Route path='/:userId' element={<Home />} />
+              {/*<Route path='/map/:geo' element={<Map />} />*/}
           </Routes>
         </Router>
       </div>
